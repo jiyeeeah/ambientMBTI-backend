@@ -6,6 +6,8 @@ import com.jiye.ambientMBTIbackend.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class MemberService {
@@ -14,5 +16,24 @@ public class MemberService {
     public void join (MemberDTO memberDTO) {
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberDTO);
         memberRepository.save(memberEntity);
+    }
+
+    public MemberDTO login(MemberDTO memberDTO) {
+        Optional<MemberEntity> byMemberEmail = memberRepository.findByMemberNickname(memberDTO.getMemberNickname());
+        if (byMemberEmail.isPresent()) {
+            // 조회 결과가 있다(해당 이메일을 가진 회원 정보가 있다.)
+            MemberEntity memberEntity = byMemberEmail.get();
+            if (memberEntity.getMemberPassword().equals(memberDTO.getMemberPassword())) {
+                // 비밀번호 일치
+                // entity -> dto 변환 후 리턴
+                return MemberDTO.toMemberDTO(memberEntity);
+            } else {
+                // 비밀번호 불일치(로그인 실패)
+                return null;
+            }
+        } else {
+            // 조회 결과가 없다(해당 이메일을 가진 회원이 없다.)
+            return null;
+        }
     }
 }
