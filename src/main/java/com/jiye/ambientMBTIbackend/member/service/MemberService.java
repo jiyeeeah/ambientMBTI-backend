@@ -52,4 +52,13 @@ public class MemberService {
         Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(id);
         return optionalMemberEntity.map(MemberDTO::toMemberDTO).orElse(null);
     }
+
+    public MemberDTO updateForm(String myNickname) {
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findByMemberNickname(myNickname);
+        return optionalMemberEntity.map(MemberDTO::toMemberDTO).orElse(null);
+    }
+
+    public void update(MemberDTO memberDTO) {
+        memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
+    }
 }

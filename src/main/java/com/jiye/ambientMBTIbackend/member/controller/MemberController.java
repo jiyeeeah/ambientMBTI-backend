@@ -36,10 +36,10 @@ public class MemberController {
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
-        if(loginResult != null) {
+        if (loginResult != null) {
             // login 성공
-            session.setAttribute("loginEmail", loginResult.getMemberNickname());
-            return "home/index";
+            session.setAttribute("loginNickname", loginResult.getMemberNickname());
+            return "member/main";
         } else {
             // login 실패
             return "member/login";
@@ -59,4 +59,20 @@ public class MemberController {
         model.addAttribute("member", memberDTO);
         return "member/detail";
     }
+
+    @GetMapping("/update")
+    public String updateForm(HttpSession session, Model model) {
+        String myNickname = (String) session.getAttribute("loginNickname");
+        MemberDTO memberDTO = memberService.updateForm(myNickname);
+        model.addAttribute("updateMember", memberDTO);
+        return "member/update";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute MemberDTO memberDTO) {
+        memberService.update(memberDTO);
+        return "redirect:/member/" + memberDTO.getId();
+    }
+
+
 }
