@@ -5,10 +5,13 @@ import com.jiye.ambientMBTIbackend.member.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -44,5 +47,12 @@ public class MemberController {
             // login 실패
             return "member/login";
         }
+    }
+
+    @GetMapping("/list")
+    public String findAll(Model model) {
+        List<MemberDTO> memberDTOList = memberService.findAll();
+        model.addAttribute("memberList", memberDTOList);
+        return "member/list";
     }
 }
