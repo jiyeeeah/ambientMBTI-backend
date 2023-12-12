@@ -47,4 +47,9 @@ public class MemberService {
         }
         return memberDTOList;
     }
+
+    public MemberDTO findById(Long id) {
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(id);
+        return optionalMemberEntity.map(MemberDTO::toMemberDTO).orElse(null);
+    }
 }
