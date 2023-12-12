@@ -80,5 +80,15 @@ public class MemberController {
         return "redirect:/member/list";
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "home/index";
+    }
 
+    @PostMapping("/nickname-check")
+    public @ResponseBody String emailCheck(@RequestParam("memberNickname") String memberNickname) {
+        System.out.println("memberNickname = " + memberNickname);
+        return memberService.nicknameCheck(memberNickname);
+    }
 }
