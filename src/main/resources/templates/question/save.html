@@ -9,11 +9,36 @@
 <body>
 <form action="/question/save" method="post" enctype="multipart/form-data">
     질문 : <textarea name="questionContent" cols="30" rows="10"></textarea> <br>
-    질문할 날짜 : <input type="date" name="questionAskTime"> <br>
-    <input type="submit" value="질문 작성">
+    질문할 날짜 : <input type="date" name="questionAskTime" id="date" onchange="dateCheck()"> <br>
+    <p id="check-result"></p>
+    <input type="submit" value="질문 작성" id="date-submit">
 </form>
 </body>
 <script>
+    const dateCheck = () => {
+        const date = document.getElementById("date").value;
+        const checkResult = document.getElementById("check-result");
+        const submitBtn = document.getElementById("date-submit")
 
+        $.ajax({
+            type: "post",
+            url: "/question/date-check",
+            data: {
+                "questionDate": date
+            },
+            success: function(res) {
+                if (res == "ok") {
+                    checkResult.innerHTML = "질문 등록 가능";
+                    submitBtn.disabled = false
+                } else {
+                    checkResult.innerHTML = "질문 등록 불가능";
+                    submitBtn.disabled = true
+                }
+            },
+            error: function(err) {
+                console.log("에러 발생", err);
+            }
+        })
+    }
 </script>
 </html>

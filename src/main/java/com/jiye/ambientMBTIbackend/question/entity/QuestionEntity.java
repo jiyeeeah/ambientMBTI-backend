@@ -20,12 +20,12 @@ public class QuestionEntity {
     private String questionContent;
 
     @Column
-    private LocalDate questionAskTime;
+    private LocalDate questionDate;
 
     public static QuestionEntity toSaveEntity(QuestionDTO questionDTO) {
         QuestionEntity questionEntity = new QuestionEntity();
         questionEntity.setQuestionContent(questionDTO.getQuestionContent());
-        questionEntity.setQuestionAskTime(questionDTO.getQuestionAskTime());
+        questionEntity.setQuestionDate(questionDTO.getQuestionAskTime());
         return questionEntity;
     }
 }

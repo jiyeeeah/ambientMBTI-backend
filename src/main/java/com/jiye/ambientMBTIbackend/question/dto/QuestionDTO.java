@@ -19,7 +19,7 @@ public class QuestionDTO {
         QuestionDTO questionDTO = new QuestionDTO();
         questionDTO.setId(questionEntity.getId());
         questionDTO.setQuestionContent(questionEntity.getQuestionContent());
-        questionDTO.setQuestionAskTime(questionEntity.getQuestionAskTime());
+        questionDTO.setQuestionAskTime(questionEntity.getQuestionDate());
         return questionDTO;
     }
 }

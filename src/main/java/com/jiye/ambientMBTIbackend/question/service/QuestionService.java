@@ -6,6 +6,9 @@ import com.jiye.ambientMBTIbackend.question.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class QuestionService {
@@ -14,5 +17,16 @@ public class QuestionService {
     public void save(QuestionDTO questionDTO) {
         QuestionEntity questionEntity = QuestionEntity.toSaveEntity(questionDTO);
         questionRepository.save(questionEntity);
+    }
+
+    public String dateCheck(LocalDate questionDate) {
+        Optional<QuestionEntity> optionalQuestionEntity = questionRepository.findByQuestionDate(questionDate);
+        if(optionalQuestionEntity.isPresent()) {
+            // 조회결과가 있다. -> 사용할 수 없다.
+            return null;
+        } else {
+            // 조회결과가 없다 -> 사용할 수 있다.
+            return "ok";
+        }
     }
 }

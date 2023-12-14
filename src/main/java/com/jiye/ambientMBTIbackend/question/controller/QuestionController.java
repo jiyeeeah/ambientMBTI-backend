@@ -4,10 +4,9 @@ import com.jiye.ambientMBTIbackend.question.dto.QuestionDTO;
 import com.jiye.ambientMBTIbackend.question.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @Controller
 @RequiredArgsConstructor
@@ -25,6 +24,11 @@ public class QuestionController {
         System.out.println("questionDTO = " + questionDTO);
         questionService.save(questionDTO);
         return "home/index"; // 홈화면 제대로 구현하면 redirect로 바꿔주기
+    }
+
+    @PostMapping("/date-check")
+    public @ResponseBody String dateCheck(@RequestParam("questionDate") LocalDate questionDate) {
+        return questionService.dateCheck(questionDate);
     }
 
 }
