@@ -2,8 +2,6 @@ package com.jiye.ambientMBTIbackend.question.repository;
 
 import com.jiye.ambientMBTIbackend.question.entity.QuestionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 
 public interface QuestionRepository extends JpaRepository<QuestionEntity, Long> {
 }

@@ -3,7 +3,7 @@ package com.jiye.ambientMBTIbackend.question.dto;
 import com.jiye.ambientMBTIbackend.question.entity.QuestionEntity;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class QuestionDTO {
     private Long id;
     private String questionContent;
-    private LocalDateTime questionAskTime;
+    private LocalDate questionAskTime;
 
     public static QuestionDTO toQuestionDTO(QuestionEntity questionEntity) {
         QuestionDTO questionDTO = new QuestionDTO();

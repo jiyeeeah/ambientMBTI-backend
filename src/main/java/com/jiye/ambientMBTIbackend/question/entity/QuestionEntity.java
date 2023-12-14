@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -20,7 +20,7 @@ public class QuestionEntity {
     private String questionContent;
 
     @Column
-    private LocalDateTime questionAskTime;
+    private LocalDate questionAskTime;
 
     public static QuestionEntity toSaveEntity(QuestionDTO questionDTO) {
         QuestionEntity questionEntity = new QuestionEntity();
