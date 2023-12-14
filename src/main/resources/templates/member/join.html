@@ -13,6 +13,8 @@
     <p id="check-result"></p>
     비밀번호 : <input type="password" name="memberPassword"><br>
     이름: <input type="text" name="memberName"><br>
+    MBTI: <input type="text" name="memberMbti" id="memberMbti" onkeyup="mbtiCheck()"><br>
+    <p id="mbtiCheck-result"></p>
     <input type="submit" value="회원가입">
 </form>
 </body>
@@ -39,6 +41,25 @@
                 console.log("에러 발생", err);
             }
         })
+    }
+
+    const mbtiCheck = () => {
+        const mbti = document.getElementById("memberMbti").value.toUpperCase();
+        const checkResult = document.getElementById("mbtiCheck-result");
+
+        const validMbtiTypes = [
+        'ISFJ', 'ISFP', 'ISTJ', 'ISTP',
+        'INFJ', 'INFP', 'INTJ', 'INTP',
+        'ESFJ', 'ESFP', 'ESTJ', 'ESTP',
+        'ENFJ', 'ENFP', 'ENTJ', 'ENTP'
+      ];
+
+      if (validMbtiTypes.includes(mbti)) {
+        console.log('Valid MBTI type');
+      } else {
+        console.log('Invalid MBTI type');
+        checkResult.innerHTML = "MBTI를 정확하게 입력해주세요.";
+      }
     }
 </script>
 </html>

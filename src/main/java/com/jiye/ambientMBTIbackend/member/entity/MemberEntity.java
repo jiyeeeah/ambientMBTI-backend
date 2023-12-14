@@ -1,6 +1,7 @@
 package com.jiye.ambientMBTIbackend.member.entity;
 
 import com.jiye.ambientMBTIbackend.member.dto.MemberDTO;
+import com.jiye.ambientMBTIbackend.member.repository.MemberMbti;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +25,9 @@ public class MemberEntity {
     private String memberName;
 
     @Column
+    private MemberMbti memberMbti;
+
+    @Column
     private boolean isAdmin;
 
     public static MemberEntity toMemberEntity(MemberDTO memberDTO) {
@@ -31,6 +35,7 @@ public class MemberEntity {
         memberEntity.setMemberNickname(memberDTO.getMemberNickname());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
         memberEntity.setMemberName(memberDTO.getMemberName());
+        memberEntity.setMemberMbti(memberDTO.getMemberMbti());
         memberEntity.setAdmin(memberDTO.isAdmin());
         return memberEntity;
     }
@@ -41,6 +46,7 @@ public class MemberEntity {
         memberEntity.setMemberNickname(memberDTO.getMemberNickname());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
         memberEntity.setMemberName(memberDTO.getMemberName());
+        memberEntity.setMemberMbti(memberDTO.getMemberMbti());
         memberEntity.setAdmin(memberDTO.isAdmin());
         return memberEntity;
     }
