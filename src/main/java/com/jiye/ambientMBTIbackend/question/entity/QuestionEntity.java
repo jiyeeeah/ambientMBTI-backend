@@ -25,7 +25,7 @@ public class QuestionEntity {
     public static QuestionEntity toSaveEntity(QuestionDTO questionDTO) {
         QuestionEntity questionEntity = new QuestionEntity();
         questionEntity.setQuestionContent(questionDTO.getQuestionContent());
-        questionEntity.setQuestionDate(questionDTO.getQuestionAskTime());
+        questionEntity.setQuestionDate(questionDTO.getQuestionDate());
         return questionEntity;
     }
 }

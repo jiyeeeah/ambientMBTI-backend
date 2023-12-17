@@ -39,7 +39,7 @@ public class MemberController {
         if (loginResult != null) {
             // login 성공
             session.setAttribute("loginNickname", loginResult.getMemberNickname());
-            return "member/main";
+            return "redirect:/main";
         } else {
             // login 실패
             return "member/login";

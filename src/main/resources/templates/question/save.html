@@ -18,7 +18,7 @@
     const dateCheck = () => {
         const date = document.getElementById("date").value;
         const checkResult = document.getElementById("check-result");
-        const submitBtn = document.getElementById("date-submit")
+        const submitBtn = document.getElementById("date-submit");
 
         $.ajax({
             type: "post",
@@ -29,10 +29,10 @@
             success: function(res) {
                 if (res == "ok") {
                     checkResult.innerHTML = "질문 등록 가능";
-                    submitBtn.disabled = false
+                    submitBtn.disabled = false;
                 } else {
                     checkResult.innerHTML = "질문 등록 불가능";
-                    submitBtn.disabled = true
+                    submitBtn.disabled = true;
                 }
             },
             error: function(err) {

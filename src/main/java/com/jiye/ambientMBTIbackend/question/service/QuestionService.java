@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,6 +29,25 @@ public class QuestionService {
         } else {
             // 조회결과가 없다 -> 사용할 수 있다.
             return "ok";
+        }
+    }
+
+    public List<QuestionDTO> findAll() {
+        List<QuestionEntity> questionEntityList = questionRepository.findAll();
+        List<QuestionDTO> questionDTOList = new ArrayList<>();
+        for(QuestionEntity questionEntity: questionEntityList) {
+            questionDTOList.add(QuestionDTO.toQuestionDTO(questionEntity));
+        }
+        return questionDTOList;
+    }
+
+    public QuestionDTO findByDate(LocalDate now) {
+        Optional<QuestionEntity> optionalQuestionEntity = questionRepository.findByQuestionDate(now);
+        if (optionalQuestionEntity.isPresent()) {
+            QuestionEntity questionEntity = optionalQuestionEntity.get();
+            return QuestionDTO.toQuestionDTO(questionEntity);
+        } else {
+            return null;
         }
     }
 }

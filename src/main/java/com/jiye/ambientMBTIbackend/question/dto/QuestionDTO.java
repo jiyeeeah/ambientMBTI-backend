@@ -13,13 +13,13 @@ import java.time.LocalDate;
 public class QuestionDTO {
     private Long id;
     private String questionContent;
-    private LocalDate questionAskTime;
+    private LocalDate questionDate;
 
     public static QuestionDTO toQuestionDTO(QuestionEntity questionEntity) {
         QuestionDTO questionDTO = new QuestionDTO();
         questionDTO.setId(questionEntity.getId());
         questionDTO.setQuestionContent(questionEntity.getQuestionContent());
-        questionDTO.setQuestionAskTime(questionEntity.getQuestionDate());
+        questionDTO.setQuestionDate(questionEntity.getQuestionDate());
         return questionDTO;
     }
 }
