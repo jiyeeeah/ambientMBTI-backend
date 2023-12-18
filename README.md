@@ -27,3 +27,7 @@
 
 ## 자세한 작업 로그
 [📃작업로그](https://jessiesaying.notion.site/AmbientMBTI-BackEnd-ab887bf6c4b449bc8e8892ea54e5f124?pvs=4)
+
+## 🛠️ 기술 스택
+![SpringBoot](https://img.shields.io/badge/spring%20boot-ffffff?style=for-the-badge&logo=springboot&logoColor=6DB33F)
+![MySQL](https://img.shields.io/badge/MySQL-ffffff?style=for-the-badge&logo=mysql&logoColor=#4479A1)
