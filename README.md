@@ -31,5 +31,3 @@
 ## 🛠️ 기술 스택
 ![SpringBoot](https://img.shields.io/badge/spring%20boot-ffffff?style=for-the-badge&logo=springboot&logoColor=6DB33F)
 ![MySQL](https://img.shields.io/badge/MySQL-ffffff?style=for-the-badge&logo=mysql&logoColor=#4479A1)
-
-![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=jiyeeeah&repo=ambientMBTI-backend&show_owner=true)
