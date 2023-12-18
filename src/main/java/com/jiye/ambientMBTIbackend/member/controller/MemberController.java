@@ -38,7 +38,7 @@ public class MemberController {
         MemberDTO loginResult = memberService.login(memberDTO);
         if (loginResult != null) {
             // login 성공
-            session.setAttribute("loginNickname", loginResult.getMemberNickname());
+            session.setAttribute("loginId", loginResult.getId());
             return "redirect:/main";
         } else {
             // login 실패

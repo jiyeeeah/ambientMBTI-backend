@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>answer-write</title>
+</head>
+<body>
+<form action="/answer/write" method="post">
+    나의 답변 : <textarea name="answerContent" cols="30" rows="10"></textarea> <br>
+    <input type="hidden" name="questionId" th:value="${question.id}">
+    <input type="hidden" name="writerId" th:value="${memberId}">
+    <input type="submit" value="답변작성">
+</form>
+</body>
+</html>
